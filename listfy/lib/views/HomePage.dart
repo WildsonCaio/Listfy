@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:listfy/views/CategoriesList.dart';
 import 'package:listfy/components/CardItem.dart';
 import 'package:listfy/components/Tabbar.dart';
+import 'package:listfy/views/DetailsAD.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,8 +16,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ListFy'),
-        backgroundColor: Colors.blue,
+        title: Text(
+          'ListFy',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       backgroundColor: Color.fromARGB(255, 223, 218, 218),
       body: Column(
@@ -40,12 +43,21 @@ class _HomePageState extends State<HomePage> {
             child: ListView.builder(
                 itemCount: 12,
                 itemBuilder: (context, index) {
-                  return CardItem(
-                    title: 'Sofá',
-                    price: '500',
-                    picture: 'https://source.unsplash.com/150x180/?couch',
-                    city: 'São José',
-                    date: '18/11',
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => DetailsAD(),
+                        ),
+                      );
+                    },
+                    child: CardItem(
+                      title: 'Sofá',
+                      price: '500',
+                      picture: 'https://source.unsplash.com/150x180/?couch',
+                      city: 'São José',
+                      date: '18/11',
+                    ),
                   );
                 }),
           )
