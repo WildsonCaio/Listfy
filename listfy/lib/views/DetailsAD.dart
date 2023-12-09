@@ -14,7 +14,7 @@ class _DetailsADState extends State<DetailsAD> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Detalhes',
           style: TextStyle(color: Colors.white),
         ),
@@ -34,7 +34,7 @@ class _DetailsADState extends State<DetailsAD> {
                           context: context,
                           builder: (context) {
                             return Dialog(
-                              insetPadding: EdgeInsets.all(5),
+                              insetPadding: const EdgeInsets.all(5),
                               child: Container(
                                 height: 400,
                                 child: Image.network(
@@ -66,11 +66,11 @@ class _DetailsADState extends State<DetailsAD> {
           showDialog(
               context: context,
               builder: (context) {
-                return Dialog(
+                return const Dialog(
                   insetPadding:
                       EdgeInsets.symmetric(vertical: 200, horizontal: 20),
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -121,7 +121,7 @@ class _DetailsADState extends State<DetailsAD> {
                 );
               });
         },
-        child: Icon(
+        child: const Icon(
           Icons.phone_android_rounded,
           color: Colors.white,
         ),

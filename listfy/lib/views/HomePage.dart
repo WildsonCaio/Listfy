@@ -16,12 +16,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'ListFy',
           style: TextStyle(color: Colors.white),
         ),
       ),
-      backgroundColor: Color.fromARGB(255, 223, 218, 218),
+      backgroundColor: const Color.fromARGB(255, 223, 218, 218),
       body: Column(
         children: [
           Row(
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => CategoriesList(),
+                      builder: (context) => const CategoriesList(),
                     ),
                   );
                 },
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => DetailsAD(),
+                          builder: (context) => const DetailsAD(),
                         ),
                       );
                     },
@@ -62,6 +62,10 @@ class _HomePageState extends State<HomePage> {
                 }),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
       ),
     );
   }
