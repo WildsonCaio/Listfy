@@ -5,8 +5,9 @@ import 'package:image_picker/image_picker.dart';
 
 class SelectImage extends StatefulWidget {
   var imageController;
+  Function? updateImage;
 
-  SelectImage({super.key, required this.imageController});
+  SelectImage({super.key, required this.imageController, this.updateImage});
 
   @override
   State<SelectImage> createState() => _SelectImageState();
@@ -17,11 +18,8 @@ class _SelectImageState extends State<SelectImage> {
   loadImage() async {
     var picker = ImagePicker();
     var selectedImage = await picker.pickImage(source: ImageSource.camera);
-    setState(() {
-      widget.imageController = selectedImage;
-    });
 
-    print(widget.imageController);
+    widget.updateImage!(selectedImage);
   }
 
   @override

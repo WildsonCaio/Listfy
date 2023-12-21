@@ -3,6 +3,7 @@ import 'package:listfy/components/InputText.dart';
 import 'package:listfy/components/SelectImage.dart';
 import 'package:listfy/data/CategoriesData.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:listfy/services/CreateAdService.dart';
 
 class CreateAd extends StatefulWidget {
   const CreateAd({super.key});
@@ -15,6 +16,10 @@ class _CreateAdState extends State<CreateAd> {
   var imageController_1;
   var imageController_2;
   var imageController_3;
+
+  var titleController = '';
+  var categoryController = '';
+  var priceController = '';
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +38,27 @@ class _CreateAdState extends State<CreateAd> {
                 children: [
                   SelectImage(
                     imageController: imageController_1,
+                    updateImage: (value) {
+                      setState(() {
+                        imageController_1 = value;
+                      });
+                    },
                   ),
                   SelectImage(
                     imageController: imageController_2,
+                    updateImage: (value) {
+                      setState(() {
+                        imageController_2 = value;
+                      });
+                    },
                   ),
                   SelectImage(
                     imageController: imageController_3,
+                    updateImage: (value) {
+                      setState(() {
+                        imageController_3 = value;
+                      });
+                    },
                   ),
                 ],
               ),
@@ -46,6 +66,12 @@ class _CreateAdState extends State<CreateAd> {
                 height: 12,
               ),
               InputText(
+                updateController: (value) {
+                  setState(() {
+                    titleController = value;
+                  });
+                },
+                inputController: titleController,
                 label: 'Título',
               ),
               InputText(
@@ -53,9 +79,13 @@ class _CreateAdState extends State<CreateAd> {
                 height: 4,
               ),
               InputText(
+                inputController: priceController,
                 label: 'Preço',
               ),
               DropdownSearch(
+                onChanged: (value) {
+                  categoryController = value;
+                },
                 dropdownDecoratorProps: DropDownDecoratorProps(
                   dropdownSearchDecoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -81,7 +111,9 @@ class _CreateAdState extends State<CreateAd> {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    createadService(titleController);
+                  },
                   child: const Text('Criar Anúncio'),
                 ),
               )
@@ -92,14 +124,3 @@ class _CreateAdState extends State<CreateAd> {
     );
   }
 }
-
-// Titulo 
-// descrição 
-// preço 
-// cidade 
-// categoria
-// Email
-// Telefone
-
-
-
